@@ -1,0 +1,1 @@
+This project is about Python oop and everything about it
