@@ -1,4 +1,4 @@
-Python - Network
+Python - Network 0
 Description
 
 This project is about learning how HTTP works and how to use curl in Bash. It covers sending different HTTP requests, working with headers, and handling server responses.
