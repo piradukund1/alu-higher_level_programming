@@ -1,21 +1,47 @@
-#!/usr/bin/python3
-"""This module supplies one function, print_square(size)."""
+The ``4-print_square`` module
+===============================
 
+Using ``print_square``
+----------------------
 
-def print_square(size):
-    """Prints a square with the character #.
+Importing the function:
+    >>> print_square = __import__('4-print_square').print_square
 
-    Args:
-        size: The side length of the square.
+Normal square of size 4:
+    >>> print_square(4)
+    ####
+    ####
+    ####
+    ####
 
-    Raises:
-        TypeError: If size is not an integer.
-        ValueError: If size is less than 0.
-    """
-    if type(size) is not int:
-        raise TypeError("size must be an integer")
-    if size < 0:
-        raise ValueError("size must be >= 0")
+Square of size 0 (prints nothing):
+    >>> print_square(0)
 
-    for _ in range(size):
-        print("#" * size)
+Square of size 1:
+    >>> print_square(1)
+    #
+
+Negative integer size throws ValueError:
+    >>> print_square(-1)
+    Traceback (most recent call last):
+    ValueError: size must be >= 0
+
+Negative float size throws TypeError:
+    >>> print_square(-1.5)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+Positive float size throws TypeError:
+    >>> print_square(1.5)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+String size throws TypeError:
+    >>> print_square("4")
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+Missing argument throws TypeError:
+    >>> print_square()
+    Traceback (most recent call last):
+    TypeError: print_square() missing 1 required positional argument: 'size'
