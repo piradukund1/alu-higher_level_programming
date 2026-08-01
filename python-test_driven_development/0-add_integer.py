@@ -1,33 +1,25 @@
 #!/usr/bin/python3
-"""This module supplies one function, add_integer(a, b)."""
+"""Lists all states from the database."""
+
+import MySQLdb
+import sys
 
 
-def add_integer(a, b=98):
-    """Adds two integers or floats cast to integers.
+if __name__ == "__main__":
+    db = MySQLdb.connect(
+        host="localhost",
+        port=3306,
+        user=sys.argv[1],
+        passwd=sys.argv[2],
+        db=sys.argv[3]
+    )
 
-    Args:
-        a: The first number.
-        b: The second number, defaults to 98.
+    cur = db.cursor()
+    cur.execute("SELECT * FROM states ORDER BY id ASC")
 
-    Returns:
-        The addition of a and b as an integer.
+    rows = cur.fetchall()
+    for row in rows:
+        print(row)
 
-    Raises:
-        TypeError: If a or b is not an integer/float, or NaN/inf.
-    """
-    if type(a) is not int and type(a) is not float:
-        raise TypeError("a must be an integer")
-    if type(b) is not int and type(b) is not float:
-        raise TypeError("b must be an integer")
-
-    try:
-        a = int(a)
-    except (OverflowError, ValueError):
-        raise TypeError("a must be an integer")
-
-    try:
-        b = int(b)
-    except (OverflowError, ValueError):
-        raise TypeError("b must be an integer")
-
-    return a + b
+    cur.close()
+    db.close()
