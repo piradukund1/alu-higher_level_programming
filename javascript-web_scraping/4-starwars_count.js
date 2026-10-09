@@ -6,11 +6,15 @@ request(process.argv[2], (error, response, body) => {
     console.log(error);
     return;
   }
+
   if (response.statusCode === 200) {
-    const films = JSON.parse(body).results;
+    const data = JSON.parse(body);
+    const films = Array.isArray(data) ? data : data.results;
+
     const count = films.filter((film) =>
-      film.characters.includes('https://swapi-api.alx-tools.com/api/people/18/')
+      film.characters.some((character) => character.includes('/people/18'))
     ).length;
+
     console.log(count);
   }
 });
