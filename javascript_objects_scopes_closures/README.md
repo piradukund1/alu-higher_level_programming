@@ -1,0 +1,1 @@
+crazyy broo this is javascript_objects_scopes_closures
