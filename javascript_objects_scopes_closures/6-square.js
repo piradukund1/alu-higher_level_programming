@@ -1,7 +1,7 @@
 #!/usr/bin/node
-const Square = require('./5-square');
+const SquareBase = require('./5-square');
 
-class Square extends Square {
+class Square extends SquareBase {
   charPrint (c) {
     const character = c === undefined ? 'X' : c;
     for (let i = 0; i < this.height; i++) {
